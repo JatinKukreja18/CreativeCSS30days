@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Ibarra+Real+Nova:400,700|Lato:300,400,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+   
+
+    <div class="section">
+        <h1 class="heading">Gradient</h1>
+        <button class="button button-secondary oct-hover-gradient shadow">
+            Hello 
+        </button>
+        <button class="button button-secondary oct-hover-gradient shadow">
+            Hi 
+        </button>
+    </div>
+    
+    <div class="section">
+            <h1 class="heading">Surround element with line border (clockwise)</h1>
+
+            <button class="button oct-surround">
+                    turn on
+            </button>
+            <button class="button oct-surround shadow">
+                    turn on
+            </button>
+            <div class="card oct-surround">
+                <img src="./assets/flower.jpg" alt="">
+            </div>
+            <div class="card oct-surround shadow">
+                <img src="./assets/flower.jpg" alt="">
+            </div>
+    </div>
+
+    <div class="section green">
+        <h1 class="heading">Border plus background button</h1>
+        <div class="row">
+
+
+            <button class="button button-transparent 
+                        oct-line-edges horizontal-left">
+                    Left 
+            </button>
+            <button class="button button-transparent 
+                        oct-line-edges horizontal-right">
+                    Right 
+            </button>
+
+
+        </div>
+        <div class="row">
+
+
+                <button class="button button-transparent 
+                            oct-line-edges vertical-top">
+                        Top 
+                </button>
+                <button class="button button-transparent 
+                            oct-line-edges vertical-bottom">
+                        Bottom 
+                </button>
+
+                
+            </div>
+    </div>
+    <div class="section">
+        <h1 class="heading">Icons</h1>
+
+
+        
+        <span class="oct-icon-ham-cross "></span>
+
+        <span class="spacer-horizontal"></span>
+
+        <span class="oct-icon-minus"></span>  
+
+        <span class="spacer-horizontal"></span>
+
+        <div class="oct-cross-container">
+            <span class="cross-text">CL</span>
+
+            <!-- The cross icon -->
+            <span class="oct-icon-cross"></span>  
+            
+            <span class="cross-text">SE</span>
+        </div>
+
+
+
+    </div>
+    <div class="section orange-gradient">
+        <h1 class="heading">Text Animations</h1>
+
+
+
+
+        <span class="oct-text oct-text-slide-up" data-value="SLIDE UP">
+            <span>SLIDE UP</span>
+        </span>
+        
+        
+        <span class="spacer-horizontal"></span>
+        
+        
+        <span class="oct-text oct-text-slide-down" data-value="SLIDE DOWN">
+            <span>SLIDE DOWN</span>
+        </span>
+
+
+    </div>
+
+    <div class="section ">
+        <h1 class="heading">SVG</h1>
+
+
+            <img src="./assets/shopping-cart.png" alt="" srcset="">
+            <span class="spacer-horizontal"></span>
+            <img src="./assets/shopping-cart.svg" alt="" srcset="" style="width:32px">
+    </div>
+
+    <div class="vertical section">
+            <h1 class="heading">SVG</h1>
+
+            <!-- <p class="colored-text">loading 2020</p> -->
+            <div class="demo">
+                <!-- <svg class="progress" width="120" height="120" viewBox="0 0 120 120">
+                    <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#eccf00;stop-opacity:1" />	
+                    <stop offset="100%" style="stop-color:#ea3a6f;stop-opacity:1" />
+                </linearGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="54" fill="none" stroke="#e6e6e6" stroke-width="12" />
+                    <circle class="progress__value" cx="60" cy="60" r="54" fill="none" stroke="url(#grad1)" stroke-width="12" />
+                </svg> -->
+
+                <svg class="progress" width="120" height="120" viewBox="0 0 120 120">
+                    <defs>
+                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#0758ef;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#07ceef;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+
+                        <!-- this is the grey circle -->
+                        <circle cx="60" cy="60" r="54" fill="none" 
+                                stroke="#e6e6e6" stroke-width="12" />
+
+                        <!-- this is coloured progress circle -->
+                        <circle class="progress__value" 
+                        cx="60" cy="60" r="54" fill="none" 
+                        stroke="url(#grad2)" stroke-width="12" />
+
+                    </svg>
+                    <!-- used for showing percentage -->
+                    <span id="dd"></span>
+                </div>
+
+
+                <input id="control" class="progress-input" type="range" value="0" />
+    </div>
+
+    <script>
+        (function(){
+            document.querySelector('.oct-icon-ham-cross').addEventListener('click',function(e){
+                e.target.classList.toggle('active');
+            })
+            document.querySelector('.oct-icon-minus').addEventListener('click',function(e){
+                e.target.classList.toggle('active');
+            })
+            
+            // initiating control for radial progress
+            var control = document.getElementById('control');
+            if(control){
+                control.addEventListener('input', function(event) {
+                    progress(event.target.valueAsNumber);
+                });
+            }
+        }())
+
+        // code for svg radial progress
+        var RADIUS = 54;
+        var CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+        var progressValue = document.querySelector('.progress__value');
+
+        function progress(value) {
+            var progress = value / 100;
+            var dashoffset = CIRCUMFERENCE * (1 - progress);
+            
+            console.log('progress:', value + '%', '|', 'offset:', dashoffset)
+            document.getElementById('dd').innerHTML =  value + '%';
+            progressValue.style.strokeDashoffset = dashoffset;
+        }
+        progressValue.style.strokeDasharray = CIRCUMFERENCE;
+        progress(0)
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,521 @@
+/* 
+    layout global styling (Not related to library)
+*/
+body{
+    background: #fff;
+    padding: 0px;
+    margin: 0px;
+    min-height: 100vh;
+    font-family: 'Ibarra Real Nova', serif;
+    font-family: 'Lato', sans-serif;
+}
+
+.shadow{
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.section{
+    width: 100%;
+    padding: 40px 0;
+    text-align: center;
+    min-height: 100vh;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+}
+.section.vertical{
+    flex-direction: column;
+}
+.colored-text{
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 800;
+    color: #ea3a6e;
+    margin-bottom: 40px;
+}
+.row{
+    width: 100%;
+}
+.spacer-horizontal{
+    width: 40px;
+    height: 100%;
+}
+.section.orange-gradient{
+    background: linear-gradient(330deg, #eccf00, #07ceef);
+    
+}
+.section.green{
+    background: #435e41;
+    background-image: url('https://images.unsplash.com/photo-1468434453985-b1ca3b555f00?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    display: block;
+    padding: 200px 0;
+}
+.section.green button{
+    margin-bottom: 40px;
+}
+.section.green::before{
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.15);
+    /* z-index: 1; */
+}
+.section .heading{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: #505050;
+    font-size: 18px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+}
+.card{
+    padding: 20px;
+    background: #fff;
+    color: #a38056;
+    cursor: pointer;
+}
+
+.card > img{
+    width: 250px;
+}
+/* common button */
+.button{
+    color: dodgerblue;
+    border: none;
+    background: #fff;
+    padding: 10px 15px;
+    min-width: 50px;
+    font-size: 20px;
+    /* border-radius: 6px; */
+    font-weight: 300;text-transform: uppercase;
+    /* height: 50px; */
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    transition: .3s;
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+.button.button-secondary{
+    color: #ea3a6f;
+}
+.button.button-transparent{
+    background: rgba(67,94,65,0.4);
+    color: #fff;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    font-weight: 300;
+    font-size: 14px;
+    min-width: 100px;
+}
+.progress-input{
+    margin-top: 100px;
+}
+
+/*  
+    One Class Transition Classes 
+*/
+
+
+/* 1. Gradient backdrop */
+.oct-hover-gradient{
+    position: relative;
+    transition: .5s;
+    margin: 5px; 
+}
+
+.oct-hover-gradient::after{
+    content: "";
+    display: block;
+    position: absolute;
+    height: calc(100% + 10px);
+    width: calc(100% + 10px);
+    top: -5px;
+    left: -5px;
+    z-index: -1;
+    opacity: 0;
+    transition: .3s;
+}
+.oct-hover-gradient:hover::after{
+    opacity: 1;
+    /* change the gradient below */
+    background: linear-gradient(330deg, #eccf00, #ea3a6f, #07ceef);
+    background-size:200% 300%;
+    transition: .3s;
+    -webkit-animation: ActiveGradient 2s ease infinite;
+    -moz-animation: ActiveGradient 2s ease infinite;
+    animation: ActiveGradient 2s ease infinite;
+}
+@-webkit-keyframes ActiveGradient {
+    0%{background-position:0% 5%,}
+    50%{background-position:100% 96%}
+    100%{background-position:0% 5%}
+}
+@-moz-keyframes ActiveGradient {
+    0%{background-position:0% 5%}
+    50%{background-position:100% 96%}
+    100%{background-position:0% 5%}
+}
+@keyframes ActiveGradient { 
+    0%{background-position:0% 5%}
+    50%{background-position:100% 96%}
+    100%{background-position:0% 5%}
+}
+
+
+/* 2. Surround the element with line border (clockwise)  */
+
+.oct-surround{
+    position: relative;
+}
+
+.oct-surround::after,.oct-surround::before{
+    content: "";
+    display: block;
+    position: absolute;
+    height: 0px;
+    width: 0px;
+    opacity: 0;
+}
+.oct-surround::after{
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+    top: 5px;
+    right: 5px;
+    transition: opacity 0s .8s, width 0.2s .4s, height 0.2s 0.6s;
+}
+.oct-surround::before{
+    border-top: 1px solid;
+    border-left: 1px solid;
+    bottom: 5px;
+    left: 4px;
+    transition: opacity 0s .4s, width 0.2s , height 0.2s 0.2s;
+}
+.oct-surround:hover::after,.oct-surround:hover::before{
+    height: calc(100% - 10px);;
+    width:calc(100% - 10px);
+    opacity: 1;
+
+}
+.oct-surround:hover::after{
+    transition: opacity 0s 0s, width 0.2s .2s, height 0.2s;
+}
+.oct-surround:hover::before{
+    transition: opacity 0s 0.4s,width 0.2s .6s, height 0.2s 0.4s;
+
+}   
+
+/* optional class for clicked on state */
+.oct-surround:active{
+    box-shadow: none;
+}
+
+
+/* 3. Line Edges Button */
+
+
+.oct-line-edges{
+    position: relative;
+}
+.oct-line-edges::before{
+    content:'';
+    width: 100%;
+    height: calc(100% - 2px);
+    position: absolute;
+    left: 0;
+    top: 0px;
+    transition: .4s;
+}
+
+
+
+.oct-line-edges.horizontal-left:before,
+.oct-line-edges.horizontal-right:before{
+    border-top:1px solid #fff;
+    border-bottom:1px solid #fff;
+    transform: scaleX(0);
+}
+.oct-line-edges.horizontal-left:before{
+    transform-origin: left;
+}
+.oct-line-edges.horizontal-right:before{
+    transform-origin: right;
+}
+
+
+
+.oct-line-edges.vertical-top::before,
+.oct-line-edges.vertical-bottom::before{
+    border:none;
+    border-left:1px solid #fff;
+    border-right:1px solid #fff;
+    height: 100%;
+    width: calc(100% - 2px);
+    transform: scaleY(0);
+}
+.oct-line-edges.vertical-top:before{
+    transform-origin: top;
+}
+.oct-line-edges.vertical-bottom:before{
+    transform-origin: bottom;
+}
+.oct-line-edges:hover:before{
+    transform: scale(1);
+}
+
+/* 4 Icon styles */
+
+/* hamburger to cross */
+.oct-icon-ham-cross{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    cursor: pointer;
+}
+
+.oct-icon-ham-cross::after,
+.oct-icon-ham-cross::before{
+    content: '';
+    position: absolute;
+    background: #000;
+    width: 100%;
+    height: 1px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    transition: .3s;
+}
+
+
+.oct-icon-ham-cross.active{
+    border: none;
+}
+.oct-icon-ham-cross.active::before{
+    transform: rotate(45deg) scale(1.4);
+    transform-origin: center;
+}
+.oct-icon-ham-cross.active::after{
+    transform: rotate(-45deg) scale(1.4);
+    transform-origin: center;
+}
+
+
+
+/* icon plus to minus */
+
+.oct-icon-minus{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: block;
+    cursor: pointer;
+}
+
+.oct-icon-minus::after,
+.oct-icon-minus::before{
+    content: '';
+    position: absolute;
+    background: #000;
+    width: 100%;
+    height: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    transition: .3s;
+    border-radius: 4px;
+}
+
+
+.oct-icon-minus.active::before{
+    transform: rotate(90deg) ;
+    transform-origin: center;
+    top: calc(50% - 4px);
+}
+
+/* icon cross icon */
+
+
+.oct-cross-container{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #505050;
+}
+span.cross-text{
+    font-size: 80px;
+    font-weight: 300;
+}
+.oct-icon-cross{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: block;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 7px solid;
+}
+
+
+.oct-icon-cross::after,
+.oct-icon-cross::before{
+    content: '';
+    position: absolute;
+    background: #505050;
+    width: 0;
+    height: 8px;
+    transform: translateY(-50%);
+    border-radius: 4px;
+    transition: .1s;
+}
+
+
+.oct-icon-cross::before{
+    transform: rotate(-45deg);
+    transform-origin: left bottom;
+    bottom: 17%;
+    left: 26.5%;
+    transition: .2s;
+    transition-delay: .2s;
+}
+
+
+.oct-icon-cross::after{
+    transform: rotate(45deg);
+    transform-origin: bottom right;
+    bottom: 17%;
+    right: 26.5%;
+    transition: .2s;
+}
+
+.oct-cross-container:hover .oct-icon-cross::after{
+    transition: .3s;
+    transition-delay: .3s;
+    width: 80%;
+}
+.oct-cross-container:hover .oct-icon-cross::before{
+    transition: .3s;
+    width: 80%;
+}
+
+
+
+/* Text Animations */
+
+.oct-text{
+    color: #fff;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+
+.oct-text-slide-up{
+    cursor: pointer;
+    position: relative;
+}
+.oct-text-slide-up span{
+    transition: .5s;
+    display: inherit;
+}
+.oct-text-slide-up:after{
+
+    /* This is value is picked from data-value */
+    content:attr(data-value);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transition: .5s;
+    opacity: 0;
+}
+.oct-text-slide-up:hover span{
+    opacity: 0;
+    transform: translateY(-100%);
+}
+.oct-text-slide-up:hover:after{
+    top: 0;
+    opacity: 1;
+}
+
+
+
+
+
+.oct-text-slide-down{
+    cursor: pointer;
+    position: relative;
+}
+.oct-text-slide-down span{
+    transition: .5s;
+    display: inherit;
+}
+.oct-text-slide-down:after{
+
+    /* This is value is picked from data-value */
+    content:attr(data-value);
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    transition: .5s;
+    opacity: 0;
+}
+.oct-text-slide-down:hover span{
+    opacity: 0;
+    transform: translateY(100%);
+}
+.oct-text-slide-down:hover:after{
+    bottom: 0;
+    opacity: 1;
+}
+
+/* SVG Progress */
+.progress {
+	transform: rotate(-90deg);
+}
+
+.progress__meter,
+.progress__value {
+	fill: none;
+}
+.demo{
+    position: relative;
+}
+.progress__meter {
+	stroke: #e6e6e6;
+}
+
+.progress__value {
+	/* stroke: #f77a52; */
+	stroke-linecap: round;
+}
+#dd{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 25px;
+    color: #ea3a6e;
+}
+@keyframes progress {
+	from {
+		stroke-dashoffset: 340;
+	}
+	to {
+		stroke-dashoffset: 0;
+	}
+}
