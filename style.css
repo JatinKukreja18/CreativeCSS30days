@@ -120,7 +120,7 @@ body{
     min-width: 100px;
 }
 .progress-input{
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 /*  
@@ -487,29 +487,15 @@ span.cross-text{
 .progress {
 	transform: rotate(-90deg);
 }
-
 .progress__meter,
 .progress__value {
 	fill: none;
 }
-.demo{
-    position: relative;
-}
 .progress__meter {
 	stroke: #e6e6e6;
 }
-
 .progress__value {
-	/* stroke: #f77a52; */
 	stroke-linecap: round;
-}
-#dd{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    font-size: 25px;
-    color: #ea3a6e;
 }
 @keyframes progress {
 	from {
@@ -518,4 +504,30 @@ span.cross-text{
 	to {
 		stroke-dashoffset: 0;
 	}
+}
+
+#dd{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 25px;
+    color: #ea3a6e;
+}
+.demo{
+    position: relative;
+}
+
+/* Star Progress */
+.star-progress{
+    stroke-width: 20px;
+    stroke: gold;
+    fill: transparent;
+    stroke-dasharray: 1750px;
+    transition: 0s;
+    stroke-dashoffset: 1750px;
+    /* stroke-dashoffset: 3500; */
+    transform: rotate(-72deg);
+    transform-origin: center;
+    stroke-linecap: round;
 }
