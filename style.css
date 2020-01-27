@@ -531,3 +531,34 @@ span.cross-text{
     transform-origin: center;
     stroke-linecap: round;
 }
+
+
+/* Layered Images */
+
+
+
+.oct-box-shadow,.oct-box-shadow.style-1{
+    color: #F44336;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #fff;
+    transition: 2s;
+    cursor: pointer;
+    box-shadow: -60px 0px 0px 0px currentColor, 
+                0px 60px 0px 0px currentColor, 
+                60px 0px 0px 0px currentColor, 
+                0px -60px 0px 0px currentColor,
+                -40px 40px 0px 0px currentColor, 
+                40px 40px 0px 0px currentColor, 
+                40px -40px 0px 0px currentColor, 
+                -40px -40px 0px 0px currentColor;
+}
+.oct-box-shadow:hover{
+    border-radius: 0;
+    transform: rotate(90deg);
+}
+
+.oct-box-shadow.style-2{
+    box-shadow: -80px 0px 0px 0px currentColor, 0px 80px 0px 0px currentColor, 80px 0px 0px 0px currentColor, 0px -80px 0px 0px currentColor;     
+}
