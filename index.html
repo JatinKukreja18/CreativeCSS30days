@@ -176,12 +176,29 @@
     </div>
     
     <div class="section">
+        <h1 class="heading">Box Shadow Style 1</h1>
+
         <div class="oct-box-shadow"></div>
     </div>
     <div class="section">
+        <h1 class="heading">Box Shadow Style 2</h1>
                 <div class="oct-box-shadow style-2"></div>
     </div>
-
+    <div class="section">
+        <h1 class="heading">Box Shadow Button</h1>
+        <Button class="button box-shadow-button-1"> Sign Up </Button>
+        <Button class="button box-shadow-button-2"> Log in </Button>
+    </div>
+    <div class="section">
+        <div class="reveal"  onclick="toggleReveal()">
+                <img src="./assets/man-walking.jpg" alt="" srcset="">
+        </div>
+    </div>
+    <div class="section">
+        <div class=" tilt"  onmousemove="tiltImage(event)">
+               <span>Perspective</span>
+        </div>
+    </div>
     <script>
         (function(){
             document.querySelector('.oct-icon-ham-cross').addEventListener('click',function(e){
@@ -235,6 +252,33 @@
             // 0 == 1750;
             // 100  = 3500
             progressValueStar.style.strokeDashoffset = boundaryFill;
+        }
+
+
+        function toggleReveal(){
+            document.querySelector('.reveal').classList.toggle('active');
+        }
+        function tiltImage(e){
+            console.log(e.offsetX);
+            console.log(e.offsetY);
+            if(e.offsetX > e.target.offsetWidth/2){
+                if(e.offsetY > e.target.offsetHeight/2){
+                    // X2Y2
+                    document.querySelector('.tilt').style.transform = `perspective(250px) rotate3d(-1, 1, 0, 10deg)`;
+                }else{
+                    // X2Y1
+                    document.querySelector('.tilt').style.transform = `perspective(250px) rotate3d(1, 1, 0, 10deg)`;
+                }
+            }else{
+                if(e.offsetY > e.target.offsetHeight/2){
+                    // X1Y2
+                    document.querySelector('.tilt').style.transform = `perspective(250px) rotate3d(-1, -1, 0, 10deg)`;
+                }else{
+                    // X1Y1
+                    document.querySelector('.tilt').style.transform = `perspective(250px) rotate3d(1, -1, 0, 10deg)`;
+                }
+            }
+            document.querySelector('.tilt').style.background = `linear-gradient(${e.offsetX}deg, #25908c, #125f5f)`;
         }
     </script>
 </body>
