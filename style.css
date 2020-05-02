@@ -33,6 +33,10 @@ body{
 }
 .section.soft{
     background-color: #f1f3f6;
+    transition: .8s;
+}
+.section.dark.soft{
+    background-color: #3c3b3b;
 }
 .section.orange{
     background-color: #FC7F51;
@@ -1064,4 +1068,114 @@ span.cross-text{
 .triple-image.rotate:hover::after{
     transform: rotate(-15deg);
     transform-origin: bottom left;
+}
+
+
+
+.semi-switch{
+    width: 80px;
+    height: 40px;
+    /* background: black; */
+    border-bottom-left-radius: 50%;
+    /* border-right: 10px solid; */
+    border-bottom-left-radius: 160px;
+    border-bottom-right-radius: 160px;
+    border-right: 4px solid #d4d4d4;
+    border-bottom: 4px solid #d4d4d4;
+    border-left: 4px solid #d4d4d4;
+    cursor: pointer;
+    position: relative;
+    /* background: #f1f3f6;
+    box-shadow: -3px -3px 7px #ffffffb2, 
+                3px 3px 5px rgba(94, 104, 121, 0.3); */
+}
+.semi-switch input{
+    visibility: hidden;
+}
+.semi-switch .semi-switch-button{
+    width: calc(50% + 4px);
+    height: 1px;
+    position: absolute;
+    left: -4px;
+    background-color: transparent;
+    display: inline-block;
+    transform: rotate(0deg);
+    transform-origin: right;
+    transition: .8s ease-in-out;
+}
+.semi-switch .semi-switch-button::after{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    content: "";
+    box-shadow: 0px 0px 3px rgba(94, 104, 121, 0.6);
+    position: absolute;
+    display: inline-block;
+    left: -10px;
+    z-index: 0;
+    background: #fff;
+    top: -10px;
+    border: 1px solid #fc7f51;
+    /* transform: rotate(0deg); */
+    /* transition: 8s; */
+}
+.semi-switch input:checked + .semi-switch-button{
+    transform: rotate(-180deg);
+}
+.semi-switch input:checked + .semi-switch-button::after{
+    /* transform: rotate(180deg); */
+}
+
+.soft-ui-button{
+    padding: 14px 20px;
+    min-width: 160px;
+    font-size: 16px;
+    color: #fc7f51;
+    border:none;
+    outline: none;
+    cursor: pointer;
+    /* text-transform: uppercase; */
+    letter-spacing: 1px;
+    background: #f1f3f6;
+    box-shadow: -3px -3px 7px #ffffffb2, 
+                3px 3px 5px rgba(94, 104, 121, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.soft-ui-button svg{
+    width: 20px;
+    margin-left: 15px;
+    fill: #505050;
+    transition: 1s;
+}
+
+.soft-ui-button:active{
+    box-shadow: -3px -3px 7px #ffffffb2 inset, 
+                3px 3px 5px rgba(94, 104, 121, 0.3) inset;
+}
+.trail{
+    display: none;
+}
+
+.soft-ui-button:active svg{
+    transform: translate(-10px, 10px);
+}
+
+.soft-ui-button.sending svg{
+    transform: translate(60px, -60px);
+    transition: transform 1.5s, opacity .5s .5s;
+    opacity: 0;
+    /* position: absolute; */
+}
+.soft-ui-button.sending .trail{
+    display: block;
+}
+.soft-ui-button.sent svg{
+    transition: transform .5s;
+    opacity: 0;
+    transform: translate(-10px, 10px);
+}
+.soft-ui-button.sent .trail{
+    display: block;
 }
